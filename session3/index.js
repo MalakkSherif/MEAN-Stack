@@ -54,6 +54,7 @@ import express from 'express';
 
 const app = express();
 
+//Middelware(beya5od ay reguest ye7awelo le json)
 app.use(express.json());
 
 app.listen(4000, ()=>{
