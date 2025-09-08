@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Socket.IO chat</title>
+    <style>
+      body { margin: 0; padding-bottom: 3rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+
+      #form { background: rgba(0, 0, 0, 0.15); padding: 0.25rem; position: fixed; bottom: 0; left: 0; right: 0; display: flex; height: 3rem; box-sizing: border-box; backdrop-filter: blur(10px); }
+      #input { border: none; padding: 0 1rem; flex-grow: 1; border-radius: 2rem; margin: 0.25rem; }
+      #input:focus { outline: none; }
+      #form > button { background: #333; border: none; padding: 0 1rem; margin: 0.25rem; border-radius: 3px; outline: none; color: #fff; }
+
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages > li { padding: 0.5rem 1rem; }
+      #messages > li:nth-child(odd) { background: #efefef; }
+    </style>
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    <h3>Online Users</h3>
+    <ul id="online-users"></ul>
+    <form id="form" action="">
+      <span id="typing-status"></span>
+      <input id="input" autocomplete="off" /><button>Send</button>
+      <!-- <script src="../socket.io/socket.io.js"></script> -->
+      <script src="https://cdn.socket.io/4.8.1/socket.io.min.js" integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+" crossorigin="anonymous"></script>
+      <script>
+        const socket = io('http://localhost:2000');
+        let form = document.getElementById('form')
+        let input = document.getElementById('input')
+        let messages = document.getElementById('messages')
+        let typingStatus = document.getElementById('typing-status')
+        let onlineList = document.getElementById('online-users');
+
+
+        form.addEventListener('submit',(e)=>{
+            e.preventDefault()
+            if(input.value){
+                socket.emit('message',input.value)
+            }
+            input.value=''
+        })
+        socket.on('sendToAll',(msg)=>{
+            let listItem = document.createElement('li')
+            listItem.textContent = msg
+            messages.appendChild(listItem)
+        })
+
+        input.addEventListener('keydown',()=>{
+            socket.emit('Typing')
+        })
+        socket.on("show-typing",()=>{
+            typingStatus.textContent = 'Typing...'
+        })
+
+        input.addEventListener('keyup',()=>{
+            setTimeout(()=>{
+                socket.emit('stop-typing')
+            },2000)
+        })
+        socket.on('stop-showing-typing',()=>{
+            typingStatus.textContent= ''
+        })
+      socket.on('online-users', (users) => {
+        onlineList.innerHTML = ''; // clear
+        users.forEach((id) => {
+          let li = document.createElement('li');
+          li.textContent = `${id} online`;
+          onlineList.appendChild(li);
+        });
+      });
+
+      </script>
+    </form>
+
+  </body>
+</html>

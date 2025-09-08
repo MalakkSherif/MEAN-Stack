@@ -1,10 +1,10 @@
 {
   "name": "mean-stack",
   "version": "1.0.0",
-  "main": "Task1.js",
-  "type": "module",
+  "main": "index.js",
+  "type": "commonjs",
   "scripts": {
-    "test": "nodemon index.js"
+    "dev": "nodemon ./session6/server/index.js"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +12,7 @@
   "description": "",
   "dependencies": {
     "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
     "express": "^5.1.0",
     "express-validator": "^7.2.1",
     "jsonwebtoken": "^9.0.2",

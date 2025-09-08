@@ -4,7 +4,10 @@ import {validationResult} from 'express-validator';
 
 export const getAllCourses = async (req,res)=>{
     try{
-        let courses = await course.find({},{'__v': false});
+        const limit = req.query.limit || 10
+        const page = req.query.page || 1
+        const skip = (page-1)*limit
+        let courses = await course.find({},{'__v': false}).limit(limit).skip(skip);
         res.status(200).json(courses);
     }catch(err){
         res.status(500).json({message: 'Error from Server', error: err})
