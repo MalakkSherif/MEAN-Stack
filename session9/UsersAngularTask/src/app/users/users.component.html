@@ -1,0 +1,31 @@
+<br>
+<h1>Users</h1>
+<br>
+<div class="input-group" style="width: 600px;">
+  <input type="text" class="form-control" placeholder="Email" [(ngModel)]="searchEmail"/>
+  <button class="btn btn-primary" type="button" (click)="searchByEmail()">Search</button>
+  <button class="btn btn-secondary" type="button" (click)="resetSearch()">Reset</button>
+</div>
+<br>
+<div class="row row-cols-1 row-cols-md-4 g-4">
+  @for(user of filteredUsers; track user.id){
+  <div class="col">
+    <div class="card h-100">
+      <img [src]="user.image" class="rounded-circle mx-auto d-block img-fluid" alt="...">
+      <div class="card-body">
+        @if(user.role === 'admin'){
+        <h5 class="card-title red">{{user.role}}</h5>
+        }@else if(user.role === 'moderator'){
+            <h5 class="card-title yellow">{{user.role}}</h5>
+        }@else(){
+            <h5 class="card-title green">{{user.role}}</h5>
+        }
+        <p class="card-text">{{user.username}}</p>
+        <p class="card-text">{{user.email}}</p>
+        <p class="card-text">{{user.phone}}</p>
+        <p class="card-text">{{user.birthDate}}</p>
+      </div>
+    </div>
+  </div>
+}
+</div>

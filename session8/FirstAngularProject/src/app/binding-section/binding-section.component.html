@@ -1,0 +1,22 @@
+<h2>Data Binding</h2>
+
+
+<!-- Interpolation -->
+<p>Username: {{username}}</p>
+
+
+<!-- Property Binding -->
+<!-- <img [src] = "imagesrc"/> -->
+<br>
+<button [disabled]="!isAdmin" class="btn btn-primary">Delete</button>
+<input [value]="username"/>
+
+<!-- Event Binding -->
+<button class="btn btn-primary" (click)="handleAlert('Malak')">Alert Malak</button>
+<button class="btn btn-primary" (click)="handleAlert('Sherif')">Alert Sherif</button>
+<button class="btn btn-primary" (click)="handleAlert('Mohamed')">Alert Mohamed</button>
+
+
+<!-- Two Way Binding -->
+<h2>Two Way DB</h2>
+<input [(ngModel)]="username"/>

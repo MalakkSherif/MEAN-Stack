@@ -1,0 +1,14 @@
+    <div class="card">
+      <img [src]="recipeItem.image" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{recipeItem.name | uppercase}}</h5>
+        <p class="card-text">{{recipeItem.reviewCount | custom}}</p>
+        <ul>
+            @for(ing of recipeItem.ingredients; track $index){
+                <li>{{ing}}</li>
+            }
+        </ul>
+        <p>{{recipeItem.releaseDate | date : 'shortDate'}}</p>
+        <button class="btn btn-danger" (click)="handleDelete(recipeItem.id)">Delete</button>
+      </div>
+    </div>

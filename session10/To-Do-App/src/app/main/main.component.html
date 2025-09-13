@@ -1,0 +1,8 @@
+<ul class="list-group">
+  <app-add-task (SendToMain)="handleAddItem($event)"></app-add-task>
+  @for(task of tasks; track task.id){
+  <app-tasks [taskItem]="task" (DeleteTask)="handletDeleteItem($event)"></app-tasks>
+  }@empty{
+    <p style="text-align: center;">No tasks yet, Add one now!</p>
+  }
+</ul>

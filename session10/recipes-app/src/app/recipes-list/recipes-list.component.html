@@ -1,0 +1,10 @@
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  @for(recipe of recipes; track recipe.id){
+  <div class="col">
+    <app-recipe-card 
+      [recipeItem] ="recipe" 
+      (SendToParent)="handleDeleteRecipe($event)"
+    ></app-recipe-card>
+  </div>
+  }
+</div>
