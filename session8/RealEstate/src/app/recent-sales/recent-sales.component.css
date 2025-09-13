@@ -1,0 +1,13 @@
+.card {
+  border-radius: 1.5rem;
+}
+
+.card img {
+  border-radius: 1.5rem;
+  object-fit: cover;
+  height: 250px;
+}
+
+.badge {
+  font-size: 0.85rem;
+}

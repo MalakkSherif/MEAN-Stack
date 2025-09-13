@@ -1,0 +1,59 @@
+<div class="container my-5">
+  <!-- Header -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="text-center mb-4" style="font-weight: bold;">Our Recent Sales</h1>
+    <a href="#" class="text-muted fw-semibold" style="text-decoration: none;">More</a>
+  </div>
+
+  <!-- Filters -->
+  <div class="d-flex flex-wrap gap-2 mb-4" style="justify-content: center;">
+    <div ngbDropdown>
+      <button ngbDropdownToggle class="btn btn-outline-secondary rounded-pill px-4">Location</button>
+      <div ngbDropdownMenu>
+        <button ngbDropdownItem>Lahore</button>
+        <button ngbDropdownItem>Karachi</button>
+        <button ngbDropdownItem>Islamabad</button>
+      </div>
+    </div>
+
+    <div ngbDropdown>
+      <button ngbDropdownToggle class="btn btn-outline-secondary rounded-pill px-4">Property</button>
+      <div ngbDropdownMenu>
+        <button ngbDropdownItem>Apartment</button>
+        <button ngbDropdownItem>Villa</button>
+      </div>
+    </div>
+
+    <div ngbDropdown>
+      <button ngbDropdownToggle class="btn btn-outline-secondary rounded-pill px-4">Type</button>
+      <div ngbDropdownMenu>
+        <button ngbDropdownItem>Sale</button>
+        <button ngbDropdownItem>Rent</button>
+      </div>
+    </div>
+
+    <button class="btn btn-dark rounded-pill px-4" style="background-color: #022c06;">Submit</button>
+  </div>
+
+  <!-- Cards Carousel -->
+  <ngb-carousel [showNavigationIndicators]="false" [interval]="0">
+    <ng-template ngbSlide *ngFor="let group of propertyGroups">
+      <div class="row g-3">
+        <div class="col-md-4" *ngFor="let property of group">
+          <div class="card border-0 shadow-sm bg-light-subtle h-100">
+            <div class="position-relative">
+              <img [src]="property.image" class="card-img-top rounded-4" alt="property" />
+              <span class="badge bg-light text-dark position-absolute top-0 end-0 m-2 px-3 py-2 rounded-pill">
+                {{ property.price }}
+              </span>
+            </div>
+            <div class="card-body">
+              <p class="fw-semibold mb-1">{{ property.title }}</p>
+              <small class="text-muted">{{ property.subtitle }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>

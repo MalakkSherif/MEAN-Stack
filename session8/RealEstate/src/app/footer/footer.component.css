@@ -1,0 +1,31 @@
+.footer {
+  background-color: #022c06; /* your requested green */
+  color: #ffffff;            /* make text white */
+}
+
+.footer a {
+  color: #ffffff;
+  transition: color 0.3s;
+}
+
+.footer a:hover {
+  color: #9acd32; /* soft green on hover */
+  text-decoration: underline;
+}
+
+.footer .form-control {
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+
+.footer .form-control::placeholder {
+  color: #cccccc;
+}
+
+.footer .btn-success {
+  background-color: #a9ceac;
+  border: none;
+  color: #022c06;
+  font-weight: bold;
+}
