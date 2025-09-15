@@ -9,6 +9,7 @@
             }
         </ul>
         <p>{{recipeItem.releaseDate | date : 'shortDate'}}</p>
+        <button class="btn btn-primary mx-3" (click)="handleViewDetails(recipeItem.id)">View Details</button>
         <button class="btn btn-danger" (click)="handleDelete(recipeItem.id)">Delete</button>
       </div>
     </div>

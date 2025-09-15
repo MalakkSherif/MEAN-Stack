@@ -1,0 +1,41 @@
+<h2>Reactive Form</h2>
+<form [formGroup]="recipeForm" (ngSubmit)="handleSubmit()">
+    <div class="mb-3">
+        <label for="name" class="form-label">Recipe name</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="name" 
+            aria-describedby="nameHelp" 
+            name="recipeName"
+            formControlName="recipeName"
+            >
+
+        @if(formControls['recipeName'].invalid && (formControls['recipeName'].touched || submitted)){
+         @if(formControls['recipeName'].errors && formControls['recipeName'].errors['required']){
+            <div id="nameHelp" class="form-text text-danger">Recipe name is required</div>
+        }@else if(formControls['recipeName'].errors && formControls['recipeName'].errors['minlength']){
+            <div id="nameHelp" class="form-text text-danger">Recipe name should be at least 3 chars</div>
+        }}
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea 
+            class="form-control" 
+            id="description" 
+            rows="5" 
+            name="description"
+            formControlName="description"
+            ></textarea>
+        @if(formControls['description'].invalid && (formControls['description'].touched || submitted)){
+         @if(formControls['description'].hasError('required')){
+            <div id="nameHelp" class="form-text text-danger">Description is required</div>
+        }@else if(formControls['description'].hasError('minlength')){
+            <div id="nameHelp" class="form-text text-danger">Description should be at least 3 chars</div>
+        }@else if(formControls['description'].hasError('maxlength')){
+            <div id="nameHelp" class="form-text text-danger">Description can't be more than 50 chars</div>
+        }
+    }
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

@@ -1,0 +1,55 @@
+<div class="container mt-5" style="max-width: 400px;">
+  <h3 class="mb-4">Login</h3>
+  <form #loginForm="ngForm">
+    <!-- Email -->
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input 
+        type="email" 
+        class="form-control" 
+        id="email" 
+        placeholder="Enter your email"
+        name="email"
+        ngModel
+        required
+        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+        #email="ngModel"
+        >
+        @if(email.invalid && (email.touched || loginForm.submitted)){
+         @if(email.errors && email.errors['required']){
+            <div id="nameHelp" class="form-text text-danger">Email is required</div>
+        }@else if(email.errors && email.errors['pattern']){
+            <div id="nameHelp" class="form-text text-danger">Invalid email format</div>
+        }}
+    </div>
+
+    <!-- Password -->
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input 
+        type="password" 
+        class="form-control" 
+        id="password" 
+        placeholder="Enter your password"
+        name="password"
+        ngModel
+        required
+        #password="ngModel"
+        >
+        @if(password.invalid && (password.touched || loginForm.submitted)){
+         @if(password.errors && password.errors['required']){
+            <div id="nameHelp" class="form-text text-danger">Password is required</div>
+        }}
+
+    </div>
+
+    <!-- Submit -->
+    <button type="submit" class="btn btn-success w-100">Login</button>
+  </form>
+  <!-- Register link -->
+  <div class="text-center mt-3">
+    <small>Don’t have an account? 
+      <a href="/register" style="color: #044A0A; font-weight: 500;">Register</a>
+    </small>
+  </div>
+</div>

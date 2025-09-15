@@ -1,0 +1,94 @@
+<div class="container mt-5" style="max-width: 400px;">
+  <h3 class="mb-4">Register</h3>
+  <form [formGroup]="registerForm" (ngSubmit)="handleSubmit()">
+    <!-- Name -->
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="name" 
+        placeholder="Enter your name"
+        formControlName="name">
+
+        @if(formControls['name'].invalid && (formControls['name'].touched || submitted)){
+         @if(formControls['name'].errors && formControls['name'].errors['required']){
+            <div id="nameHelp" class="form-text text-danger">Name is required</div>
+        }}
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input 
+        type="email" 
+        class="form-control" 
+        id="email" 
+        placeholder="Enter your email"
+        formControlName="email">
+
+        @if(formControls['email'].invalid && (formControls['email'].touched || submitted)){
+         @if(formControls['email'].errors && formControls['email'].errors['required']){
+            <div id="nameHelp" class="form-text text-danger">Email is required</div>
+        }@else if(formControls['email'].errors && formControls['email'].errors['pattern']){
+            <div id="nameHelp" class="form-text text-danger">Invalid email format</div>
+        }}
+    </div>
+
+    <!-- Username -->
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="username" 
+        placeholder="Choose a username"
+        formControlName="username">
+
+        @if(formControls['username'].invalid && (formControls['username'].touched || submitted)){
+         @if(formControls['username'].errors && formControls['username'].errors['required']){
+            <div id="nameHelp" class="form-text text-danger">Username is required</div>
+        }@else if(formControls['username'].errors && formControls['username'].errors['pattern']){
+            <div id="nameHelp" class="form-text text-danger">Username can't contain spaces</div>
+        }}
+    </div>
+
+    <!-- Password -->
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input 
+        type="password" 
+        class="form-control" 
+        id="password" 
+        placeholder="Enter your password"
+        formControlName="password">
+
+        @if(formControls['password'].invalid && (formControls['password'].touched || submitted)){
+         @if(formControls['password'].errors && formControls['password'].errors['required']){
+            <div id="nameHelp" class="form-text text-danger">Username is required</div>
+        }@else if(formControls['password'].errors && formControls['password'].errors['pattern']){
+            <div id="nameHelp" class="form-text text-danger">Password length can't be
+less than 8 characters, and should contain lowercase, uppercase, digit and special character </div>
+        }}
+    </div>
+
+    <!-- Confirm Password
+    <div class="mb-3">
+      <label for="confirmPassword" class="form-label">Confirm Password</label>
+      <input 
+        type="password" 
+        class="form-control" 
+        id="confirmPassword" 
+        placeholder="Re-enter your password">
+    </div> -->
+
+    <!-- Submit -->
+    <button type="submit" class="btn btn-success w-100">Register</button>
+
+    <!-- Login link -->
+    <div class="mt-3 text-center">
+      Already have an account? 
+      <a href="/login" style="color:#044A0A; font-weight: 500;">Login</a>
+    </div>
+  </form>
+</div>

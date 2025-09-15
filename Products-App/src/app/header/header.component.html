@@ -1,13 +1,12 @@
 <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" style="color: #044A0A; font-weight: 500;">
+        <a class="navbar-brand" style="color: #044A0A; font-weight: 500;" routerLink="/">
             Products App
         </a>
-
         <div class="d-flex ms-auto align-items-center gap-3">
-            <a href="#" class="nav-link" style="color: #044A0A; font-weight: 500;">Register</a>
-            <a href="#" class="nav-link" style="color: #044A0A; font-weight: 500;">Login</a>
-            <a href="#" class="nav-link" style="color: #044A0A;">
+            <a routerLink="/register" routerLinkActive="active-link" class="nav-link" >Register</a>
+            <a routerLink="/login" routerLinkActive="active-link" class="nav-link" >Login</a>
+            <a routerLink="/cart" routerLinkActive="active-link" class="nav-link">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart-fill fs-1"
                     viewBox="0 0 20 20" stroke-width="5">
                     <path

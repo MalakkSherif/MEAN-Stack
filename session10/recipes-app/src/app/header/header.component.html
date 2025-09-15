@@ -1,15 +1,26 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Recipes App</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="#">Home</a>
-        <a class="nav-link" href="#">Features</a>
-        <a class="nav-link" href="#">Pricing</a>
-        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        <a class="nav-link " routerLink="/" routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{exact: true}">Recipe List</a>
+        <a class="nav-link" routerLink="/add-recipe-template" routerLinkActive="active-link">Add Recipe Template</a>
+        <a class="nav-link" routerLink="/add-recipe-reactive" routerLinkActive="active-link">Add Recipe Reactive</a>
+        <div class="dropdown">
+          <button class="btn dropdown-toggle" type="button" routerLink="/profile" routerLinkActive="active-link"data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Profile
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/profile/settings">Settings</a></li>
+            <li><a class="dropdown-item" routerLink="/profile/about">About</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
