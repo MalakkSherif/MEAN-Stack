@@ -8,6 +8,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AboutComponent } from './about/about.component';
 import { authGuard } from './guards/auth.guard';
 import { AddRecipeReactiveComponent } from './add-recipe-reactive/add-recipe-reactive.component';
+import { CounterComponent } from './counter/counter.component';
 
 export const routes: Routes = [
     {
@@ -30,6 +31,11 @@ export const routes: Routes = [
         path: 'recipe-details/:recipeId',
         component: RecipeDetailsComponent,
         title: 'Recipe Details'
+    },
+    {
+        path: 'counter',
+        component: CounterComponent,
+        title: 'Counter'
     },
     {
         path: 'profile',

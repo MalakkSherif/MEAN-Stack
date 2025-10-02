@@ -1,1 +1,46 @@
-<p>cart works!</p>
+<div class="cart-container">
+  <h2 class="mb-4">Cart</h2>
+
+  <table class="cart-table">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th class="text-center">Quantity</th>
+        <th class="text-center">Remove</th>
+        <th class="text-end">Price</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td class="desc">
+          <img [src]="productItem.thumbnail" alt="{{productItem.title}}" class="product-image">
+          <div class="product-info">
+            <strong>{{ productItem.title }}</strong><br>
+            <small class="text-muted">Product Code: {{ productItem.id }}</small>
+          </div>
+        </td>
+
+        <td class="quantity text-center">
+          <div class="quantity-controls">
+            <button class="btn-qty" (click)="increaseQuantity()">+</button>
+            <span class="qty-value">{{ quantity }}</span>
+            <button class="btn-qty" (click)="decreaseQuantity()">-</button>
+          </div>
+        </td>
+
+        <td class="text-center">
+          <button class="btn-remove" (click)="removeItem()">×</button>
+        </td>
+
+        <td class="text-end">
+          £{{ productItem.price }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="total-box">
+    <strong>Total: £{{ total }}</strong>
+  </div>
+</div>

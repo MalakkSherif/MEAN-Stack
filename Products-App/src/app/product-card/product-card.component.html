@@ -1,5 +1,5 @@
-<a [routerLink]="['/product-details', productItem.id]" style="text-decoration: none; color: inherit;">
-    <div class="card ">
+<a style="text-decoration: none; color: inherit;">
+    <div class="card " [routerLink]="['/product-details', productItem.id]" >
         <div class="img-background">
             @if(productItem.stock > 0){
             <span class="badge status-badge-green">In stock</span>
@@ -18,7 +18,9 @@
                 <span [innerHTML]="productItem.rating | stars"></span>
                 {{ productItem.rating }}
             </p>
-            <button type="button" class="btn AddToCart-btn">Add to Cart</button>
+            <button type="button" class="btn AddToCart-btn" [routerLink]="['/cart', productItem.id]" (click)="$event.stopPropagation()" (click)="handleAddToCart()">
+                Add to Cart
+            </button>
         </div>
     </div>
 </a>

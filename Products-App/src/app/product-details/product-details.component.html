@@ -41,7 +41,7 @@
         {{ productItem?.rating ?? 0 }}
       </p>
 
-      <button type="button" class="btn AddToCart-btn">Add to Cart</button>
+      <button type="button" class="btn AddToCart-btn" [routerLink]="['/cart', productItem.id]" (click)="handleAddToCart()">Add to Cart</button>
     </div>
   </div>
 </div>
